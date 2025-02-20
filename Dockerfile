@@ -1,7 +1,7 @@
 FROM debian:bookworm-slim
 
 # Update and upgrade packages
-RUN apt-get update && apt-get upgrade
+RUN apt-get update && apt-get upgrade -y
 
 # Install JDK and any needed utilities
 RUN apt-get install -y openjdk-17-jre-headless \
@@ -34,4 +34,4 @@ RUN chmod +x run.sh
 EXPOSE 5055 5056
 
 # Run the gateway
-ENTRYPOINT [ "./run.sh" ]
+CMD sh ./run.sh
