@@ -34,4 +34,4 @@ RUN chmod +x run.sh
 EXPOSE 5055 5056
 
 # Run the gateway
-CMD sh ./run.sh
+CMD ["./run.sh"]
