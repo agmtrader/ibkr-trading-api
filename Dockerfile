@@ -1,5 +1,11 @@
 FROM debian:bookworm-slim
 
+# Add labels for metadata
+LABEL maintainer="AGM Technology"
+LABEL name="ibkr-web-api"
+LABEL version="1.0"
+LABEL description=""
+
 # Update and upgrade packages
 RUN apt-get update && apt-get upgrade -y
 
