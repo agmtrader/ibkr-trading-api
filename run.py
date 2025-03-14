@@ -1,5 +1,6 @@
 import requests, os
 from flask import Flask, request
+from src.utils.logger import logger
 
 BASE_API_URL = "https://localhost:5055/v1/api"
 ACCOUNT_ID = os.environ['IBKR_ACCOUNT_ID']
