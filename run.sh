@@ -5,4 +5,4 @@ cd gateway && sh bin/run.sh root/conf.yaml &
 python3 -m venv venv && . venv/bin/activate && venv/bin/pip install -r requirements.txt
 
 # Start Gunicorn with environment variables
-gunicorn --bind 0.0.0.0:5056 --workers 2 --threads 4 --timeout 180 run:app
+gunicorn --bind 0.0.0.0:5056 --timeout 180 run:app
