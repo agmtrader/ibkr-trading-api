@@ -26,9 +26,6 @@ def start_api():
         storage_uri='memory://'
     )
 
-    from src.app import portfolio
-    app.register_blueprint(portfolio.bp, url_prefix='/')
-
     # Create index route
     @app.route("/", methods=['GET'])
     def main_route():
@@ -73,6 +70,10 @@ def start_api():
         app.logger.error(f'Forbidden access attempt: {error}')
         return jsonify({"error": "Forbidden", "message": "You don't have permission to access this resource"}), 403
 
+    from src.app import contracts, portfolio
+    app.register_blueprint(contracts.bp, url_prefix='/contracts')
+    app.register_blueprint(portfolio.bp, url_prefix='/portfolio')
+    
     return app
 
 app = start_api()

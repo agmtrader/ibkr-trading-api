@@ -1,0 +1,11 @@
+name: ibkr
+services:
+  ibkr-trading-api:
+    build: 
+      context: ../ibkr-trading-api
+      dockerfile: Dockerfile
+    image: ibkr-trading-api
+    container_name: ibkr-trading-api
+    ports:
+      - "5055:5055"
+      - "5056:5056"

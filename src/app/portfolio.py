@@ -12,7 +12,7 @@ bp = Blueprint('portfolio', __name__)
 # Portfolio
 @bp.route("/portfolio", methods=['GET'])
 def portfolio_route():
-    logger.info(f"account_id: {account_manager.account_id}")
+    logger.info(f"Fetching portfolio information")
     if account_manager.account_id is None:
         return {"error": "No account selected"}, 400
     response = requests.get(f"{BASE_API_URL}/portfolio/{account_manager.account_id}/positions/0", verify=False)
@@ -21,6 +21,7 @@ def portfolio_route():
 
 @bp.route("/account/allocation", methods=['GET'])
 def account_allocation_route():
+    logger.info(f"Fetching account allocation information")
     if account_manager.account_id is None:
         return {"error": "No account selected"}, 400
     response = requests.get(f"{BASE_API_URL}/portfolio/{account_manager.account_id}/allocation", verify=False)
@@ -28,6 +29,7 @@ def account_allocation_route():
 
 @bp.route("/positions", methods=['GET'])
 def positions_route():
+    logger.info(f"Fetching positions information")
     if account_manager.account_id is None:
         return {"error": "No account selected"}, 400
     response = requests.get(f"{BASE_API_URL}/portfolio/{account_manager.account_id}/positions/0", verify=False)
@@ -35,15 +37,16 @@ def positions_route():
 
 @bp.route("/account/summary", methods=['GET'])
 def account_summary_route():
-    logger.info(f"Accessing account summary with account_id: {account_manager.account_id}")
+    logger.info(f"Fetching account summary information")
     if account_manager.account_id is None:
-        logger.error("No account selected. Please ensure you've logged in and accessed the main route first.")
+        logger.error("No account selected")
         return {"error": "No account selected"}, 400
     response = requests.get(f"{BASE_API_URL}/portfolio/{account_manager.account_id}/summary", verify=False)
     return response.json()
 
 @bp.route("/account/ledger", methods=['GET'])
 def account_ledger_route():
+    logger.info(f"Fetching account ledger information")
     if account_manager.account_id is None:
         return {"error": "No account selected"}, 400
     response = requests.get(f"{BASE_API_URL}/portfolio/{account_manager.account_id}/ledger", verify=False)
