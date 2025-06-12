@@ -99,3 +99,17 @@ def secdef_info_route():
         url += f"&filters={filters}"
     response = requests.get(url, verify=False)
     return response.json()
+
+@bp.route("/bond-filters", methods=['POST'])
+def bond_filters_route():
+    logger.info(f"Fetching bond filters")
+    url = f"{BASE_API_URL}/iserver/secdef/bond-filters"
+    payload = request.get_json(force=True)
+    symbol = payload.get("symbol", None)
+    issueId = payload.get("issueId", None)
+    if symbol:
+        url += f"?symbol={symbol}"
+    if issueId:
+        url += f"&issueId={issueId}"
+    response = requests.get(url, verify=False)
+    return response.json()

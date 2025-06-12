@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Start the gateway
 cd gateway && sh bin/run.sh root/conf.yaml &
 
 # Create virtual environment and install dependencies

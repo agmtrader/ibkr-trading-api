@@ -3,8 +3,8 @@ import requests
 base_url = "http://localhost:5056"
 url = f"{base_url}/contracts/search"
 payload = {
-    "symbol": "AAPL",
-    "secType": "STK",
+    "symbol": "PCG",
+    "secType": "BOND",
 }
 response = requests.post(url, json=payload, verify=False)
 contracts = response.json()
@@ -23,15 +23,10 @@ for contract in contracts:
     print("bondid: ", contract.get("bondid", ""))
     print("\n")
 
-conid = "265598"
-sectype = "STK"
-month = "202506"
-url2 = f"{base_url}/contracts/info"
+url2 = f"{base_url}/contracts/bond-filters"
 payload = {
-    "conid": conid,
-    "sectype": sectype,
-    "month": month,
+    "symbol": "BOND",
+    "issueId": "e1432232",
 }
 response = requests.post(url2, json=payload, verify=False)
-details = response.json()
-print(details)
+print(response.json())

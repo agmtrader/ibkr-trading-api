@@ -9,7 +9,7 @@ sslCert: "vertx.jks"
 sslPwd: "mywebapi"
 #sslCert: "cacert.jks"
 #sslPwd: "abc123"
-authDelay: 3000
+authDelay: 60
 portalBaseURL: ""
 serverOptions:
     blockedThreadCheckInterval: 1000000
